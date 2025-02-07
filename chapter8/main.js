@@ -27,6 +27,16 @@
 //     }
 // };
 
-var double = function (number) {
-    return number * 2;
-};
+// var double = function (number) {
+//     return number * 2;
+// };
+
+for (var boomBam = 0; boomBam < 5; boomBam++) {
+    console.log(boomBam);
+}
+
+var counter = 0;
+while (counter < 10) {
+    console.log(counter + "Hello");
+    counter++
+}
