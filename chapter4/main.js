@@ -73,3 +73,10 @@ var books ={
     }
 };
 console.log(books);
+
+var dog = {
+    name: "Buddy",
+    breed: "Golden Retriever",
+    age: 3
+  };
+  console.log(dog);
