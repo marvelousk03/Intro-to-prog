@@ -3,6 +3,7 @@
 // };
 // sayHello("Marvelous");
 // sayHello("Kelly");
+// sayHello("David");
 
 // var sayWelcome = function (name){
 //     console.log("Welcome " + name + " mi casa es tu casa!")
@@ -30,13 +31,3 @@
 // var double = function (number) {
 //     return number * 2;
 // };
-
-for (var boomBam = 0; boomBam < 5; boomBam++) {
-    console.log(boomBam);
-}
-
-var counter = 0;
-while (counter < 10) {
-    console.log(counter + "Hello");
-    counter++
-}
