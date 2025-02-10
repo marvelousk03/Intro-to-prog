@@ -27,18 +27,18 @@ function moveUpDown(e) {
     }
 }
 
-// function moveUpDown(e) {
-//     var robotPart = e.target;
-//     var top = 0;
-//     var id = setInterval(frame, 10) // draw every 10ms
-//     function frame() {
-//         robotPart.style.top = top + '%';
-//         top++;
-//         if (top === 36) {
-//             clearInterval(id);
-//         }
-//     }
-// }
+function moveUpDown(e) {
+    var robotPart = e.target;
+    var top = 0;
+    var id = setInterval(frame, 10) // draw every 10ms
+    function frame() {
+        robotPart.style.top = top + '%';
+        top++;
+        if (top === 36) {
+            clearInterval(id);
+        }
+    }
+}
 
 function moveRightLeft(e) {
     var robotPart = e.target;
@@ -47,24 +47,32 @@ function moveRightLeft(e) {
     function frame() {
         robotPart.style.left = left + '%';
         left++;
-        if (left === 70) {
+        if (left === 71) {
             clearInterval(id);
         }
     }
 }
 
 // Change body color when hovering over elements
-function changeMouthColor(color) {
-    document.body.style.backgroundColor = color;
+// var mouthColor = document.getElementById("mouth");
+function changeMouthColor() {
+    document.getElementById("mouth").style.backgroundColor = "green";
 }
 
 // mouth
 mouth.addEventListener("mouseover", function() {
-    changeMouthColor("pink"); // Change color on hover
+    changeMouthColor(); // Change color on hover
 });
+
+function mouthColorBack() {
+    document.getElementById("mouth").style.backgroundColor = "pink";
+}
+
+// mouth
 mouth.addEventListener("mouseout", function() {
-    changeMouthColor(""); // Reset to default
+    mouthColorBack(); // Change color on hover
 });
+  
 
 // Create an audio object
 var music = new Audio('brz.mp3'); // Replace with your file path
