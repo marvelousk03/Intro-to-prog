@@ -99,7 +99,6 @@ function calculateIt() {
             break;
         }
     }
-    console.log("Hello")
 
     //display the operation
     if (typeof (operand1) === "string") {
