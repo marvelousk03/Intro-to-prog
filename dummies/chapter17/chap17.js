@@ -20,23 +20,23 @@
 // alert(myFriends[randomFriend]);
 
 //Listing 17.5
-var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-var weather = ["Sunny", "Partly Sunny", "Partly Cloudy", "Cloudy", "Raining", "Snowing", "Thunderstorm", "Foggy"];
+// var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+// var weather = ["Sunny", "Partly Sunny", "Partly Cloudy", "Cloudy", "Raining", "Snowing", "Thunderstorm", "Foggy"];
 
-var maxTemp = 100;
-var minTemp = 0;
-generateWeather();
+// var maxTemp = 100;
+// var minTemp = 0;
+// generateWeather();
 
-function generateWeather() {
-    for (var i = 0; i < days.length; i++) {
-        var weatherToday = weather[Math.floor(Math.random() * weather.length)];
-        var tempToday = Math.floor(Math.random() * (maxTemp - minTemp) + minTemp);
+// function generateWeather() {
+//     for (var i = 0; i < days.length; i++) {
+//         var weatherToday = weather[Math.floor(Math.random() * weather.length)];
+//         var tempToday = Math.floor(Math.random() * (maxTemp - minTemp) + minTemp);
 
-        document.getElementById("5DayWeather").innerHTML += "<div id='" + days[i] + "' class='" +
-            weatherToday + "'><b>Forecast for " + days[i] + ":</b><br><br>" + weatherToday + " and " + 
-            tempToday + " degrees.</div>";
-    }
-}
+//         document.getElementById("5DayWeather").innerHTML += "<div id='" + days[i] + "' class='" +
+//             weatherToday + "'><b>Forecast for " + days[i] + ":</b><br><br>" + weatherToday + " and " + 
+//             tempToday + " degrees.</div>";
+//     }
+// }
 
 // let classMatesNames = ["Sindy", "John", "Rex", "Sandra", "Gina", "Georgia"]
 // for (var i = 0; i < classMatesNames.length; i++) {
@@ -92,3 +92,15 @@ function generateWeather() {
 // if (!found) {
 //     console.log("Please enter a multiple of 10.");
 // }
+
+// let count = 0;
+// while (count < 10) {
+//     console.log("Count is:", count);
+//     count++; 
+// }
+
+let army = 0
+while (army < 10) {
+    console.log("hey army: " +army)
+    army++;
+}
