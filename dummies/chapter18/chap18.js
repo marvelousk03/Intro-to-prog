@@ -1,6 +1,7 @@
 // declare globals
 var money = 20;
 var lunches = 0;
+var weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 //display lunch budget
 document.getElementById("money").innerHTML = money;
@@ -17,7 +18,7 @@ buys specified number of sandwiches per day at current prices
 function buyLunches() {
     resetForm();
     var day = 0;
-    while (money > 0) {
+    while (money > 0 && day < 6) {
         day++;
         var priceToday = getSandwichPrice();
         var numberOfSandwiches = document.getElementById("numSandwiches").value;
@@ -27,8 +28,8 @@ function buyLunches() {
         if (money >= totalPrice) {
             money = money - totalPrice;
             lunches++;
-            document.getElementById("receipt").innerHTML += "<p>On day " + day + ", sandwiches are: $" + priceToday + ". You have $" + money.toFixed(2) + " left.</p>";
-        
+            document.getElementById("receipt").innerHTML += "<p>On " + weekdays[day - 1] + ", sandwiches are: $" + priceToday + ". You have $" + money.toFixed(2) + " left.</p>";
+            console.log("On " + weekdays[day - 1] + ", sandwiches are: $" + priceToday + ". You have $" + money.toFixed(2) + " left.");
         } else {
             document.getElementById("receipt").innerHTML += "<p>Today, sandwiches are: $" + priceToday + ". You don't have enough money. Maybe your sister will give you some of her sandwich.</p>";
             money = 0;
