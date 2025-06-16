@@ -1,155 +1,99 @@
-// let nums = [1, 2, 3, 4, 5, 6];
-// let items = ["Coke", "Kit Kat", "Bar One", "Fanta", "Oreo", "Popcorn"];
-// let prices = [7.5, 9.5, 8.5, 7.5, 10.0, 6.5];
-// let quantities = [0, 0, 0, 0, 0, 0];
-// let totals = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
-// let totalOrderAmt = 0;
+const nums = [1, 2, 3, 4, 5, 6];
+const items = [
+  "Coke 🥤",
+  "Kit Kat 🍫",
+  "Bar One 🍫",
+  "Fanta 🍊",
+  "Simba Chips 🍟",
+  "Chappies 🍬"
+];
 
-// function add_selection(x) {
-//     console.log(x);
-//     quantities[x] = quantities[x] + 1;
-//     totals[x] = prices[x] * quantities[x];
-//     totalOrderAmt += prices[x];
+const prices = [7.5, 9.5, 8.5, 7.5, 6.5, 0.50];
 
-//     display_all();
-// }
+let quantities = new Array(items.length).fill(0);
+let totals = new Array(items.length).fill(0);
+let totalOrderAmt = 0;
 
-// function remove_selection(x) {
-//     console.log(x);
-//     if (quantities[x] > 0) {
-//         quantities[x] = quantities[x] - 1;
-//         totals[x] = prices[x] * quantities[x];
-//         totalOrderAmt -= prices[x];
-
-//     }
-//     display_all();
-// }
-
-// function total_selection(x) {
-//     alert("Your total is: $" + totalOrderAmt);
-// }
-
-
-// function display_all() {
-
-
-//     let myTable = "<table><th style='width: 100px; color: red; text-align: right;'>Num</th>";
-//     myTable += "<th style='width: 100px; color: red; text-align: right;'>Item</th>";
-//     myTable += "<th style='width: 100px; color: red; text-align: right;'>$Price</th>";
-//     myTable += "<th style='width: 100px; color: red; text-align: right;'>Quantity</th>";
-//     myTable += "<th style='width: 100px; color: red; text-align: right;'>$Total</th>";
-//     myTable += "<th style='width: 100px; color: red; text-align: right;'>Add</th>";
-//     myTable += "<th style='width: 100px; color: red; text-align: right;'>Remove</th>";
-
-//     for (i = 0; i < items.length; i++) {
-//         myTable += "<tr><td style='width: 100px; text-align: right;'>" + nums[i] + "</td>";
-//         myTable += "<td style='width: 100px; text-align: right;'>" + items[i] + "</td><";
-//         myTable += "<td style='width: 100px; text-align: right;'>" + prices[i] + "</td>";
-//         myTable += "<td style='width: 100px; text-align: right;'>" + quantities[i] + "</td>";
-//         myTable += "<td style='width: 100px; text-align: right;'>" + totals[i] + "</td>";
-//         myTable += "<td><button onclick='add_selection(" + i + ")'>Add</button></td>";
-//         myTable += "<td><button onclick='remove_selection(" + i + ")'>Remove</button></td>";
-//     }
-
-//     myTable += "</table>";
-//     myTable += "<br/><br/><p>Total: " + `$` + totalOrderAmt + "</p>";
-//     myTable += "<td><button onclick='total_selection(" + i + ")'>Check Out</button></td>";
-
-
-//     // document.write(myTable);
-//     document.getElementById("demo").innerHTML = myTable;
-
-
-// }
-
-// window.onload = function () {
-//     display_all();
-// }
-
-
-
-var nums = [1, 2, 3, 4];
-var items = ["Coke", "Kit Kat", "Bar One", "Fanta"];
-var prices = [7.5, 9.5, 8.5, 7.5];
-var quantities = [0, 0, 0, 0];
-var totals = [0.0, 0.0, 0.0, 0.0];
-var totalOrderAmt = 0;
+// Optional sounds (still included for fun)
+const addSound = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-quick-win-video-game-notification-269.mp3");
+const removeSound = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-player-losing-or-failing-2042.mp3");
 
 function add_selection(x) {
-    console.log("Add:", x);
-    quantities[x] = quantities[x] + 1;
-    totals[x] = prices[x] * quantities[x];
-    totalOrderAmt += prices[x];
-
-    display_all();
-}
-
-function allToGetHer() {
-    let grandTotal = 0;
-    for (let i = 0; i < totals.length; i++) {
-        grandTotal += totals[i];
-    }
-    return grandTotal;
+  quantities[x]++;
+  totals[x] = prices[x] * quantities[x];
+  totalOrderAmt += prices[x];
+  addSound.play();
+  showToast(`✅ Added ${items[x]}`);
+  display_all();
 }
 
 function remove_selection(x) {
-    console.log("Remove:", x);
-    if (quantities[x] > 0) { 
-        quantities[x] -= 1;
-        totals[x] = prices[x] * quantities[x]; 
-        totalOrderAmt -= prices[x]; 
-    }
-    display_all(); 
+  if (quantities[x] > 0) {
+    quantities[x]--;
+    totals[x] = prices[x] * quantities[x];
+    totalOrderAmt -= prices[x];
+    removeSound.play();
+    showToast(`❌ Removed ${items[x]}`);
+  }
+  display_all();
 }
 
-function total_selection(x) {
-    alert("Your total is: $" + totalOrderAmt);
+function allToGetHer() {
+  return totals.reduce((sum, val) => sum + val, 0);
 }
-
 
 function display_all() {
-    // Build the table and include the border attribute only once
-    let myTable = "<table border='1'><tr>";
-    myTable += "<th style='width: 100px; color: red; text-align: right;'>Num</th>";
-    myTable += "<th style='width: 100px; color: red; text-align: right;'>Item</th>";
-    myTable += "<th style='width: 100px; color: red; text-align: right;'>Price</th>";
-    myTable += "<th style='width: 100px; color: red; text-align: right;'>Quantity</th>";
-    myTable += "<th style='width: 100px; color: red; text-align: right;'>Total</th>";
-    myTable += "<th style='width: 100px; color: red; text-align: right;'>Add</th>";
-    myTable += "<th style='width: 100px; color: red; text-align: right;'>Remove</th>";
-    myTable += "</tr>";
+  let table = `
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Item</th>
+        <th>Price (R)</th>
+        <th>Qty</th>
+        <th>Total (R)</th>
+        <th>Add</th>
+        <th>Remove</th>
+      </tr>
+  `;
 
-    // Create table rows for each item
-    for (let i = 0; i < items.length; i++) {
-        myTable += "<tr>";
-        myTable += "<td style='width: 100px; text-align: right;'>" + nums[i] + "</td>";
-        myTable += "<td style='width: 100px; text-align: right;'>" + items[i] + "</td>";
-        myTable += "<td style='width: 100px; text-align: right;'>" + prices[i] + "</td>";
-        myTable += "<td style='width: 100px; text-align: right;'>" + quantities[i] + "</td>";
-        myTable += "<td style='width: 100px; text-align: right;'>" + totals[i] + "</td>";
-        myTable += "<td><button onclick='add_selection(" + i + ")'>Add</button></td>";
-        myTable += "<td><button onclick='remove_selection(" + i + ")'>Remove</button></td>";
-        myTable += "</tr>";
-    }
+  for (let i = 0; i < items.length; i++) {
+    table += `
+      <tr>
+        <td>${nums[i]}</td>
+        <td>${items[i]}</td>
+        <td>R${prices[i].toFixed(2)}</td>
+        <td>${quantities[i]}</td>
+        <td>R${totals[i].toFixed(2)}</td>
+        <td><button onclick="add_selection(${i})">➕</button></td>
+        <td><button onclick="remove_selection(${i})" ${quantities[i] === 0 ? 'disabled' : ''}>➖</button></td>
+      </tr>
+    `;
+  }
 
-    myTable += "</table>";
-    // Optionally show the total order amount below the table
-    myTable += "<br/><br/><p>Total Order Amount: " + totalOrderAmt + "</p>";
-
-    // Now update the DOM inside the function
-    document.getElementById("demo").innerHTML = myTable;
+  table += `</table>`;
+  document.getElementById("demo").innerHTML = table;
+  document.getElementById("totalDisplay").textContent = `💰 Total Order Amount: R${totalOrderAmt.toFixed(2)}`;
 }
-
-// Ensure the Purchase button ID matches your HTML
-var button = document.getElementById("Shopright");
-button.addEventListener("click", TotalForEverything);
 
 function TotalForEverything() {
-    let finalAmount = allToGetHer();
-    alert("Total amount to pay: $" + finalAmount);
+  const final = allToGetHer();
+  alert(`🎉 Final Total: R${final.toFixed(2)}\nThanks for shopping! 🛍️`);
 }
 
-// Make sure the table is displayed when the page loads
-window.onload = function() {
-    display_all();
-};
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.innerText = message;
+  toast.classList.add("show-toast");
+  setTimeout(() => toast.classList.remove("show-toast"), 2000);
+}
+
+// Dark Mode Toggle
+document.getElementById("darkModeToggle").addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+});
+
+// Checkout button
+document.getElementById("Shopright").addEventListener("click", TotalForEverything);
+
+// Load table on page load
+window.onload = display_all;

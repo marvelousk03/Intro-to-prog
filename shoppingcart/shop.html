@@ -1,21 +1,27 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" media="screen" href="shop.css" />
+  <meta charset="UTF-8" />
+  <title>🍭 Snack Shop Deluxe</title>
+  <link rel="stylesheet" href="shop.css" />
 </head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🍿 Snack Shop Deluxe 🛒</h1>
+      <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
+    </header>
 
+    <section id="demo"></section>
 
-<body onload="display_all">
-    <p id="demo"></p>
-    <br/><br/>
-    <br/>
-    <p id="total"></p>
+    <footer>
+      <div id="totalDisplay">💰 Total Order Amount: R0.00</div>
+      <button id="Shopright" class="checkout-btn">🧾 Checkout</button>
+    </footer>
 
-    <button id="Shopright">Purchase</button>
+    <div id="toast" class="toast"></div>
+  </div>
 
-    <script src="shop.js"></script>
-
+  <script src="shop.js"></script>
 </body>
-
 </html>
